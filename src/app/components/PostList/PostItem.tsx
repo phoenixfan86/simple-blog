@@ -19,7 +19,7 @@ const PostItem = ({ post }: { post: any }) => {
   const [expanded, setExpanded] = useState(false);
   const [commentName, setCommentName] = useState("");
   const [commentText, setCommentText] = useState("");
-  const userId = useSelector((state: RootState) => state.user);
+  const userId = useSelector((state: RootState) => state.user.uid);
   const dispatch = useDispatch();
 
   const [isEditing, setIsEditing] = useState(false);

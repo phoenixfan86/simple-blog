@@ -52,7 +52,7 @@ export const deletePostById = async (postId: string) => {
   await deleteDoc(doc(db, "posts", postId));
 };
 
-export const likePost = async (postId: string, userId: any) => {
+export const likePost = async (postId: string, userId: string) => {
   const postRef = doc(db, "posts", postId);
   await updateDoc(postRef, {
     likes: arrayUnion(userId),
