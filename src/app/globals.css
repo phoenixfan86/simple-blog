@@ -32,8 +32,14 @@ body {
 	background-size: cover;
 }
 
+.bg-2 {
+	background: linear-gradient(-135deg, #f5f7fa, #c3cfe2);
+	background-attachment: fixed;
+	background-size: cover;
+}
+
 .btn {
-	@apply ring-1 ring-zinc-400 rounded-3xl px-3 py-2 hover:ring-cyan-700 text-sm text-zinc-600 hover:text-zinc-800 transition-all duration-500;
+	@apply ring-1 ring-zinc-400 rounded-3xl px-3 py-1 md:py-2 hover:ring-cyan-700 text-sm text-zinc-600 hover:text-zinc-800 transition-all duration-500;
 }
 .secondBtn {
 	@apply overflow-hidden max-w-10 hover:max-w-40 hover:scale-90 hover:opacity-100 w-fit h-auto inline-block whitespace-nowrap bg-cyan-700 rounded-full px-3.5 py-2 drop-shadow-md  text-lg text-white transition-all duration-700;

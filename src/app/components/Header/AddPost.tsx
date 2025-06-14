@@ -66,14 +66,14 @@ const AddPost = () => {
       )}
 
       {showForm && (
-        <div className="absolute  top-full w-150 right-100 flex flex-col gap-5 items-center m-5 p-6 bg shadow-xl">
+        <div className="absolute  top-full left-1/2 -translate-x-1/2 w-full md:w-150 flex flex-col gap-5 items-center m-2 md:m-5 p-6 bg shadow-xl">
           <div className="w-full flex items-center justify-between">
 
             <span className="text-zinc-500">Автор: {user.username || "Гість"}</span>
             {error && <p className="text-sm text-red-500">{error}</p>}
           </div>
           <h3 className="text-2xl text-zinc-600 font-semibold" >Створіть новий пост</h3>
-          <div className="w-full flex">
+          <div className="w-full flex flex-col md:flex-row gap-5 md:gap-1">
             <div className="w-full flex flex-col justify-center gap-4 mr-3">
               <div className="w-full flex items-center">
                 <label htmlFor="" className="text-sm font-semibold text-zinc-600 mr-3">
@@ -97,7 +97,7 @@ const AddPost = () => {
               />
 
             </div>
-            <div className="flex flex-col items-center gap-6">
+            <div className="flex  md:flex-col items-center justify-center md:justify-start gap-6 pb-6 md:pb-0">
               <button
                 onClick={handleCreatePost}
                 className="thirdBtn"
@@ -111,7 +111,6 @@ const AddPost = () => {
                 Скасувати
               </button>
             </div>
-
           </div>
         </div>
       )}

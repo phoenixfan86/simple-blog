@@ -6,10 +6,10 @@ import { login, logout } from "@/lib/redux/userSlice";
 import { RootState } from "@/lib/redux/store";
 import { z } from "zod";
 import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
-import { app, db } from "@/lib/firestore";
+import { app } from "@/lib/firestore";
 
 const registrationSchema = z.object({
-  username: z.string().min(3),
+  username: z.string().min(3, "Мінімум 3 символи"),
   email: z.string().email(),
 });
 
@@ -74,11 +74,17 @@ const UserAuth = () => {
   const handleLogout = () => {
     dispatch(logout());
   };
+  const handleCancel = () => {
+    setShowForm(false)
+  };
 
   if (user.username) {
     return (
-      <div className="flex gap-2 items-center">
-        Привіт, <span className="mr-13 font-semibold">{user.username}</span>
+      <div className="flex gap-2 flex-col sm:flex-row items-center text-xs">
+        <div className="flex gap-2">
+          <span>Привіт,</span>
+          <span className="mr-1 sm:mr-3 md:mr-5 font-semibold">{user.username}</span>
+        </div>
         <button onClick={handleLogout} className="btn !text-white bg-gray-500 hover:bg-gray-400">Вийти</button>
       </div>
     );
@@ -91,12 +97,14 @@ const UserAuth = () => {
       )}
 
       {showForm && (
-        <div className="absolute top-full right-1 flex flex-col gap-5 items-center px-5 py-4 bg shadow-xl">
-          <span className="text-zinc-500">Введіть данні користувача</span>
-          <div className="flex gap-2">
+        <div className="absolute top-full right-1 ring-zinc-300 w-full md:w-auto flex flex-col gap-5 items-center px-5 py-4 bg shadow-xl">
+          <div className="flex items-center gap-1 md:gap-2">
             <button onClick={() => setIsRegister(false)} className="btn">Вхід</button>
+            <span>або</span>
             <button onClick={() => setIsRegister(true)} className="btn">Реєстрація</button>
           </div>
+          <span className="text-zinc-500">Введіть данні користувача</span>
+
 
           <input
             type="text"
@@ -116,9 +124,14 @@ const UserAuth = () => {
             />
           )}
 
-          <button onClick={isRegister ? handleRegister : handleLogin} className="btn border-1  hover:border-cyan-700 mt-6">
-            {isRegister ? "Зареєструватись" : "Увійти"}
-          </button>
+          <div className="flex gap-3 mt-6">
+            <button onClick={handleCancel} className="delBtn ">
+              Скасувати
+            </button>
+            <button onClick={isRegister ? handleRegister : handleLogin} className="btn border-1  hover:border-cyan-700">
+              {isRegister ? "Зареєструватись" : "Увійти"}
+            </button>
+          </div>
 
           {error && <p style={{ color: "red" }}>{error}</p>}
         </div>

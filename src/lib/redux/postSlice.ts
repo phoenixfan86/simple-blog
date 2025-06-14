@@ -35,6 +35,14 @@ const postsSlice = createSlice({
     addPost(state, action: PayloadAction<Post>) {
       state.posts.push(action.payload);
     },
+    updatePost: (state, action) => {
+      const { postId, postTitle, postData } = action.payload;
+      const post = state.posts.find(p => p.id === postId);
+      if (post) {
+        post.postTitle = postTitle;
+        post.postData = postData;
+      }
+    },
     deletePost: (state, action) => {
       state.posts = state.posts.filter(post => post.id !== action.payload);
     },
@@ -55,5 +63,5 @@ const postsSlice = createSlice({
   },
 });
 
-export const { setPosts, addPost, deletePost, addLikeToPost, addComment } = postsSlice.actions;
+export const { setPosts, addPost, updatePost, deletePost, addLikeToPost, addComment } = postsSlice.actions;
 export default postsSlice.reducer;

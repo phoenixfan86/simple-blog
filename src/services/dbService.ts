@@ -16,6 +16,15 @@ export const addPost=async(postId: string, data: any)=>{
 await setDoc(doc(db, "posts", postId), data);
 }
 
+export const updatePostById = async (postId: string, data: { postTitle: string; postData: string }) => {
+  const postRef = doc(db, "posts", postId);
+  await updateDoc(postRef, {
+    postTitle: data.postTitle,
+    postData: data.postData,
+    updatedAt: new Date().toISOString(),
+  });
+};
+
 export const getPost = async (postId: string) =>{
   const docRef = doc(db, "posts", postId);
   const docSnap = await getDoc(docRef);
@@ -43,7 +52,7 @@ export const deletePostById = async (postId: string) => {
   await deleteDoc(doc(db, "posts", postId));
 };
 
-export const likePost = async (postId: string, userId: string) => {
+export const likePost = async (postId: string, userId: any) => {
   const postRef = doc(db, "posts", postId);
   await updateDoc(postRef, {
     likes: arrayUnion(userId),
