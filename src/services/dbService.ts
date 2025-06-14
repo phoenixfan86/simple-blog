@@ -2,7 +2,7 @@ import {doc, setDoc, getDoc, getDocs, updateDoc, deleteDoc, arrayUnion, collecti
 import { db } from "@/lib/firestore";
 
 
-export const addUser = async (userId: string, data: any) => {
+export const addUser = async (userId: string, data: { [key: string]: any }) => {
   await setDoc(doc(db, "users", userId), data);
 };
 
@@ -12,7 +12,7 @@ export const getUser = async (userId: string) => {
   return docSnap.exists() ? docSnap.data() : null;
 };
 
-export const addPost=async(postId: string, data: any)=>{
+export const addPost=async(postId: string, data: { [key: string]: any })=>{
 await setDoc(doc(db, "posts", postId), data);
 }
 

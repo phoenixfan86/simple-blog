@@ -7,7 +7,7 @@ interface Comment {
   createdAt: string;
 }
 
-interface Post {
+export interface Post {
   id: string;
   username: string;
   postTitle: string;
@@ -46,7 +46,7 @@ const postsSlice = createSlice({
     deletePost: (state, action) => {
       state.posts = state.posts.filter(post => post.id !== action.payload);
     },
-    addLikeToPost(state, action: PayloadAction<{postId:string, userId:any}>){
+    addLikeToPost(state, action: PayloadAction<{postId:string, userId:string}>){
       const { postId, userId } = action.payload;
       const post = state.posts.find((p) => p.id === postId);
       if (post && !post.likes.includes(userId)) {

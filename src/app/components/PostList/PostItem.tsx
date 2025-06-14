@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updatePostById, deletePostById, likePost, addCommentToPost } from "@/services/dbService";
 import { updatePost, deletePost, addLikeToPost, addComment } from "@/lib/redux/postSlice";
+import type { Post } from "@/lib/redux/postSlice";
 import { RootState } from "@/lib/redux/store";
 import { z } from "zod";
 
@@ -15,7 +16,7 @@ const comentsSchema = z.object({
   commentText: z.string().min(10, "Вміст коментаря має містити щонайменше 10 символів"),
 });
 
-const PostItem = ({ post }: { post: any }) => {
+const PostItem = ({ post }: { post: Post }) => {
   const [expanded, setExpanded] = useState(false);
   const [commentName, setCommentName] = useState("");
   const [commentText, setCommentText] = useState("");
