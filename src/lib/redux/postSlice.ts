@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface Comment {
+export interface Comment {
   id: string;
   userId: string;
   text: string;

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updatePostById, deletePostById, likePost, addCommentToPost } from "@/services/dbService";
 import { updatePost, deletePost, addLikeToPost, addComment } from "@/lib/redux/postSlice";
-import type { Post } from "@/lib/redux/postSlice";
+import type { Post, Comment } from "@/lib/redux/postSlice";
 import { RootState } from "@/lib/redux/store";
 import { z } from "zod";
 
@@ -165,9 +165,9 @@ const PostItem = ({ post }: { post: Post }) => {
                 </div>
                 <div className="">
                   <ul className="mb-3">
-                    {post.comments?.map((c: any, i: number) => (
+                    {post.comments?.map((c: Comment, i: number) => (
                       <li key={i}>
-                        <span className="font-semibold">{c.name}:</span> {c.message}
+                        <span className="font-semibold">{c.userId}:</span> {c.text}
                       </li>
                     ))}
                   </ul>

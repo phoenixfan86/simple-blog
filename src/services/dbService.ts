@@ -1,8 +1,10 @@
 import {doc, setDoc, getDoc, getDocs, updateDoc, deleteDoc, arrayUnion, collection} from "firebase/firestore";
 import { db } from "@/lib/firestore";
+import { UserState } from "@/lib/redux/userSlice";
+import { Post } from "@/lib/redux/postSlice";
 
 
-export const addUser = async (userId: string, data: { [key: string]: any }) => {
+export const addUser = async (userId: string, data: UserState) => {
   await setDoc(doc(db, "users", userId), data);
 };
 
@@ -12,7 +14,7 @@ export const getUser = async (userId: string) => {
   return docSnap.exists() ? docSnap.data() : null;
 };
 
-export const addPost=async(postId: string, data: { [key: string]: any })=>{
+export const addPost=async(postId: string, data: Post)=>{
 await setDoc(doc(db, "posts", postId), data);
 }
 
