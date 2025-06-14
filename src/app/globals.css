@@ -1,26 +1,59 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+	--background: #ffffff;
+	--bg-2: #f5f7fa;
+	--foreground: #171717;
+	--color-1: #ddd;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--font-sans: var(--font-geist-sans);
+	--font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+	:root {
+		--background: #0a0a0a;
+		--foreground: #ededed;
+	}
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+	color: var(--foreground);
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.bg {
+	background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+.btn {
+	@apply ring-1 ring-zinc-400 rounded-3xl px-3 py-2 hover:ring-cyan-700 text-sm text-zinc-600 hover:text-zinc-800 transition-all duration-500;
+}
+.secondBtn {
+	@apply overflow-hidden max-w-10 hover:max-w-40 hover:scale-90 hover:opacity-100 w-fit h-auto inline-block whitespace-nowrap bg-cyan-700 rounded-full px-3.5 py-2 drop-shadow-md  text-lg text-white transition-all duration-700;
+}
+.thirdBtn {
+	@apply w-25 ring-1 ring-cyan-700 rounded-3xl px-3 py-2 hover:bg-cyan-700 text-sm text-zinc-600 hover:text-white transition-all duration-500;
+}
+
+.delBtn {
+	@apply w-25 ring-1 ring-red-700 rounded-3xl px-3 py-2 hover:bg-red-700 text-sm text-zinc-600 hover:text-white transition-all duration-500;
+}
+
+.label {
+	@apply opacity-0 hover:opacity-100 transition-opacity duration-400;
+}
+
+.userInput {
+	@apply px-2 text-zinc-600 border-b-1 border-zinc-400 focus:border-b-1 focus:border-cyan-600 outline-none;
+}
+
+.textarea {
+	@apply px-2 text-zinc-700 border-1 border-zinc-400 focus:border-b-1 focus:border-cyan-600 outline-none;
 }
