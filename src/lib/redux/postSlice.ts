@@ -1,9 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface Comment {
-  id: string;
-  userId: string;
-  text: string;
+  name: string;
+  message: string;
   createdAt: string;
 }
 

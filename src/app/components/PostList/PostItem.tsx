@@ -167,7 +167,7 @@ const PostItem = ({ post }: { post: Post }) => {
                   <ul className="mb-3">
                     {post.comments?.map((c: Comment, i: number) => (
                       <li key={i}>
-                        <span className="font-semibold">{c.userId}:</span> {c.text}
+                        <span className="font-semibold">{c.name}:</span> {c.message}
                       </li>
                     ))}
                   </ul>
